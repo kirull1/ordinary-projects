@@ -1,0 +1,156 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: #caf0f8;
+}
+
+.main{
+    margin: 0 auto;
+    width: 60%;
+}
+
+.section_div{
+    margin: 90px auto 0;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.button{
+    color: #191919;
+    cursor: pointer;
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+    font-size: 18px;
+    background-color: #caf0f8;
+    border: 3px solid #457b9d;
+    border-radius: 8px;
+    padding: 14px 50px;
+}
+
+.button:hover{
+    outline: 0;
+    color: #ededed;
+    box-shadow: 0 0 40px 40px #457b9d inset;
+}
+
+h1{
+    color: #191919;
+    font-size: 54px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    margin-top: 24vh;
+}
+
+.sect_pol{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.polsunok{
+    width: 90%;
+}
+
+.num{
+    width: max-content;
+    background-color: white;
+    padding: 14px;
+    border-radius: 10px;
+}
+
+.submit{
+    transition: .3s;
+    outline: 0;
+    color: #ededed;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: #caf0f8;
+    border: 3px solid #52b788;
+    border-radius: 8px;
+    padding: 14px 50px;
+    box-shadow: 0 0 40px 40px #52b788 inset;
+}
+
+.submit:hover{
+    color: #dddbdb;
+    border: 3px solid #42966f;
+    box-shadow: 0 0 40px 40px #42966f inset;
+}
+
+.test_sec{
+    font-size: 18px;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.test_block{
+    width: 100%;
+    margin-top: 20px;
+}
+
+h3{
+    font-size: 20px;
+}
+
+ol{
+    margin-top: 20px;
+    margin-left: 16px;
+}
+
+hr{
+    height: 1px;
+    border: 1px;
+    background-color: black;
+    margin-top: 20px;
+}
+
+.all{
+    width: 60%;
+    margin: 20px auto;
+}
+
+.radio{
+    visibility: hidden;
+}
+
+.radio:checked + .button{
+    outline: 0;
+    color: #ededed;
+    box-shadow: 0 0 40px 40px #457b9d inset;
+    visibility: visible;
+}
+
+@media only screen and (max-width: 768px) {
+
+    body{
+        margin-bottom: 40px;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin-top: 14vh;
+    }
+    .button{
+        padding: 12px 28px;
+    }
+
+    .section_div{
+        margin-top: 50px;
+        flex-wrap: wrap;
+    }
+
+    .main{
+        width: 90%;
+    }
+
+    .test_sec, .all{
+        width: 80%;
+    }
+
+}
