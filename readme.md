@@ -1,0 +1,1 @@
+This is the place where I save my small projects that are not worthy of a full-fledged repository.
