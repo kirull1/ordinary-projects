@@ -1,0 +1,292 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent;
+}
+
+a{
+    text-decoration: none;
+}
+
+html{
+    overflow: hidden;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 80px;
+    min-height: 100vh;
+    background: linear-gradient(210deg, #E6E7F9 0%, #e7f6ff 50%);
+}
+
+section{
+    overflow-y: scroll;
+    position: relative;
+    box-shadow: 0 0 20px 1px #00000052;
+    border-radius: 20px;
+    width: 400px;
+    height: 95vh;
+    background-color: white;
+}
+
+header{
+    position: relative;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+    border-radius: 20px 20px 0 0;
+    background: linear-gradient(200deg, #48c5fe 0%, #02d1a9 50%);
+}
+
+.menu{
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.menu_img{
+    cursor: pointer;
+    width: 32px;
+}
+
+.menu_content{
+    color: white;
+}
+
+.event_title{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.event{
+    overflow-y: hidden;
+    padding: 0 0 0 20px;
+    display: flex;
+}
+
+.block_event{
+    position: relative;
+    margin-right: 20px;
+}
+
+.event_img{
+    object-fit: cover;
+    border-radius: 12px;
+    width: 130px;
+    height: 130px;
+}
+
+.event_text{
+    font-size: 14px;
+    z-index: 2;
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+}
+
+.back-fon{
+    background: linear-gradient(0, black 0%, transparent 50%);
+    z-index: 0;
+    width: 100%;
+    height: 130px;
+    position: absolute;
+    top: 0;
+    border-radius: 12px;
+}
+
+.main{
+    padding: 20px;
+    display: grid;
+    grid-gap: 30px;
+}
+
+.main_content{
+    position: relative;
+    width: 100%;
+    box-shadow: 0 0 10px 0px #00000052;
+    border-radius: 8px;
+}
+
+.main_content_block{
+    padding: 14px 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main_content_img{
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+    height: 140px;
+}
+
+.main_content_text{
+    color: black;
+}
+
+.main_content_wish{
+    cursor: pointer;
+    width: 24px;
+}
+
+.special{
+    color: rgb(85, 85, 85);
+    border-radius: 0 12px 12px 0;
+    top: 20px;
+    width: max-content;
+    position: absolute;
+    padding: 6px 6px 6px 18px;
+    background-color: white;
+}
+
+footer{
+    padding: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.footer_text{
+    position: relative;
+    top: 12px;
+}
+
+hr{
+    background-color: #adadad;
+    border: .1px solid #adadad;
+}
+
+.main_page{
+    padding: 20px;
+}
+
+.main_page_img{
+    object-fit: cover;
+    border-radius: 8px;
+    width: 100%;
+    height: 140px;
+}
+
+h1{
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.main_page_title{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.menu_full{
+    transition: .5s;
+    transform: translatey(-100%);
+    border-radius: 12px;
+    z-index: 4;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #02d1a9;
+}
+
+.menu_full_content{
+    margin-top: 20%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.menu_full_text{
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.menu_full_active{
+    transform: translateY(0);
+}
+
+.menu_full_img{
+    cursor: pointer;
+    position: absolute;
+    width: 28px;
+    top: 24px;
+    left: 24px;
+}
+
+.form{
+    display: none;
+    margin: 0 auto;
+    position: relative;
+    left: 150%;
+    transition: .5s;
+}
+
+.menu_search{
+    position: relative;
+    margin: 0 auto;
+    padding-left: 30px;
+    width: 90%;
+    height: 28px;
+    border-radius: 6px;
+    border: 2px solid grey;
+}
+
+.menu_search:focus-visible{
+    outline: none;
+}
+
+.menu_search_close{
+    cursor: pointer;
+    position: absolute;
+    width: 12px;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.menu_search_loupe{
+    cursor: pointer;
+    position: absolute;
+    width: 16px;
+    top: 50%;
+    right : 0;
+    transform: translateY(-50%);
+}
+
+#menu, #loupe{
+    transition: 1s;
+    opacity: 1;
+}
+
+.recipe{
+    height: 100%;
+    overflow-y: scroll;
+    z-index: 4;
+    top: 0;
+    position: fixed;
+    transition: .3s;
+    transform: translateX(105%);
+    display: none;
+}
+
+#content, #back{
+    cursor: pointer;
+}
+
+.main_section{
+    position: fixed;
+}

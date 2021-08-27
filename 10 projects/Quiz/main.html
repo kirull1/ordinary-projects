@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="shortcut icon" href="assets/image/icon.png" type="image/x-icon">
+    <title>Quiz App</title>
+</head>
+<body>
+    
+    <section>
+
+        <div class="title">
+            <h1>Test</h1>
+            <img class="close_img" src="assets/image/close.png">
+        </div>
+
+        <div class="main">
+            <div class="stats">
+                <span class="stats_span"></span>
+                <div class="image_stats_block">
+                    <span class="img_span"><img class="image_stats" src="assets/image/remove.png"><span id="stats_wrong"></span></span>
+                    <span class="img_span"><img class="image_stats" src="assets/image/check.png"><span id="stats_right"></span></span>
+                </div>
+            </div>
+    
+            <div class="progress-bar">
+                <div style="width: 40%;" class="progress"></div>
+            </div>
+    
+            <div class="content">
+                <div class="content_quiz">
+                    <h2></h2>
+                </div>
+                <div class="content_ans">
+                    <span class="ans"><h4>A</h4> Lorem ipsum dolor sit.</span>
+                    <span class="ans"><h4>B</h4> Lorem ipsum dolor sit.</span>
+                    <span class="ans"><h4>C</h4> Lorem ipsum dolor sit.</span>
+                    <span class="ans"><h4>D</h4> Lorem ipsum dolor sit.</span>
+                </div>
+            </div>
+    
+            <div class="reply">
+    
+                <div class="reply_btn">
+                    <span>A</span>
+                </div>
+    
+                <div class="reply_btn">
+                    <span>B</span>
+                </div>
+    
+                <div class="reply_btn">
+                    <span>C</span>
+                </div>
+                
+                <div class="reply_btn">
+                    <span>D</span>
+                </div>
+    
+            </div>
+        </div>
+
+        <div class="main end" style="display: none;">
+            <div>
+                <div class="stats">
+                    <span style="font-size: 18px;">Result</span>
+                    <div class="image_stats_block">
+                        <span class="img_span"><img class="image_stats" src="assets/image/remove.png"><span id="stats_wrong_end"></span></span>
+                        <span class="img_span"><img class="image_stats" src="assets/image/check.png"><span id="stats_right_end"></span></span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-green"></div>
+                </div>
+                <p id="end_text"></p>
+            </div>
+        </div>
+
+    </section>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="content/questions.js"></script>
+    <script>
+
+        var now = 1;
+        var count = Object.keys(data['content']).length;
+        var stats = [0, 0];
+
+        function update() {           
+            $('#stats_right').text(stats[0]);
+            $('#stats_wrong').text(stats[1]);
+
+            if(now > count) end();
+
+            $('.stats_span').html('<h3>#' + now + '</h3> of ' + count);
+            $('.progress').css({"width": now/count*100 + '%'});
+            $('h2').text(data['content']['quiz' + now]['title']);
+            $('.reply').css({'pointer-events' : 'painted'});
+            $('.content_ans').empty();
+            $('.reply').empty();
+            for(key in data['content']['quiz' + now]){
+                if(key != 'title' && key != 'right'){
+                    $('.content_ans').append('<span class="ans"><h4>' + key + '</h4> ' + data['content']['quiz' + now][key] + '</span>');
+                    $('.reply').append('<div class="reply_btn"><span>' + key + '</span></div>')
+                }
+            }
+        }
+
+        function end() {
+            $('#stats_right_end').text(stats[0]);
+            $('#stats_wrong_end').text(stats[1]);
+            $('.main').css({'display' : 'none'});
+            $('.end').css({'display' : 'block'});
+            $('#end_text').text('You answered correctly at '+stats[0]+'/'+count+' questions.');
+            $('.progress-green').css({'width' : stats['0']/count*100 + '%'});
+        }
+
+        update();
+
+        $(document).ready(function(){
+            $(document).on('click', '.reply_btn', function(){
+                $('.reply').css({'pointer-events' : 'none'});
+                if($(this).text() == data['content']['quiz' + now]['right']){
+                    stats[0]++;
+                    $(this).css({'border' : '2px solid green', 'color' : 'black'});
+                }else{
+                    stats[1]++;
+                    $(this).css({'border' : '2px solid red', 'color' : 'black'});
+                }
+                now++;
+                setTimeout(() => update(), 1200);
+            });
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-family: 'Urbanist', sans-serif;
+}
+
+body{
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #79d9f6;
+    min-height: 100vh;
+}
+
+section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    transform: translateY(110vh);
+    transition: .5s;
+    position: absolute;
+    border-radius: 2px;
+    width: 400px;
+    min-height: 300px;
+    background-color: #fdfffe;
+    padding-bottom: 10px;
+}
+
+.head{
+    border-radius: 2px 2px 0 0;
+    padding: 0 20px;
+    background-color: #f6fefa;
+    height: 60px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head_img{
+    cursor: pointer;
+    width: 22px;
+}
+
+.content_block{
+    padding: 0 30px;
+}
+
+.content_text{
+    color: #5a5a5a;
+    font-size: 20px;
+}
+
+.but{
+    position: absolute;
+    bottom: 20px;
+    margin-top: 28px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.save{
+    cursor: pointer;
+    letter-spacing: 2px;
+    padding: 16px 52px;
+    background-color: #a1dd50;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.content_back1{
+    display: block !important;
+    opacity: 0.8;
+    transform: translateY(-6px) !important;
+    width: 395px;
+}
+
+.content_back2{
+    display: block !important;
+    opacity: 0.6;
+    transform: translateY(-12px) !important;
+    width: 390px;
+}

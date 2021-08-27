@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <title>Drawing</title>
+</head>
+<body>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+        section{
+            margin: 0 auto;
+            margin-top: 40px;
+            width: max-content;
+            border: 2px solid #d4f355;
+        }
+        .block{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            height: 80px;
+            background-color: #d4f355;
+        }
+        input[type=range]{
+            width: 40px;
+        }
+        .block div{
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    
+    <section>
+        <canvas id="c" width="400px" height="400px"></canvas>
+        <div class="block">
+            <div>
+                <input type="range" min="1" max="20">
+                <input type="color">
+            </div>
+            <button>Clear</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

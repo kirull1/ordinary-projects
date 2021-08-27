@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="shortcut icon" href="assets/image/icon.png" type="image/x-icon">
+    <title>Timer</title>
+</head>
+<body>
+    
+    <section>
+
+        <div class="time_block">
+            <h2>Timer</h2>
+            <div class="span">
+                <div>
+                    <div class="add" data="0" style="top: 27%; left: 25%;">+</div>
+                    <div class="add" data="1" style="top: 27%; left: 36.5%;">+</div>
+                    <div class="add" data="2" style="top: 27%; left: 54%;">+</div>
+                    <div class="add" data="3" style="top: 27%; left: 65%;">+</div>
+
+                    <div class="minus" data="0"  style="top: 61%; left: 26%;">-</div>
+                    <div class="minus" data="1" style="top: 61%; left: 38%;">-</div>
+                    <div class="minus" data="2" style="top: 61%; left: 55%;">-</div>
+                    <div class="minus" data="3" style="top: 61%; left: 66%;">-</div>
+                    <span class="time"><span id="minute">00</span>:<span id="second">00</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time_action">
+            <button id="del"><img style="width: 25px;" src="assets/image/del.png"></button>
+            <button id="play"><img style="width:15px;position:relative;left:2px;top:1px;" src="assets/image/play.png"></button>
+        </div>
+
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        let time = ['00', '00'];
+        let timerId = '';
+
+        function update(){
+            $('#minute').text(zeroFill(time[0], 2));
+            $('#second').text(zeroFill(time[1], 2));
+        }
+
+        function end() {
+            clearInterval(timerId);
+            var audio = new Audio();
+            audio.preload = 'auto';
+            audio.src = 'assets/audio/end.mp3';
+            audio.play();
+        }
+
+        function zeroFill(number, width){
+            width -= number.toString().length;
+            if (width > 0) return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+            return number + "";
+        }
+
+        function timer() {
+            time = [$('#minute').html(), $('#second').html()];
+
+            if(--time[1] < 0){
+                time[0]--;
+                time[1] = 59;
+            }
+
+            if(time[0] < 0 || time[1] < 0){
+                time = ['00', '00'];
+                end();
+            }
+
+            update();
+        }
+
+        $( document ).ready(function(){
+            $(document).on('click', '#play', function(){
+                timerId = setInterval(() => timer(), 1000);
+                $(this).removeAttr('id').attr('id', 'stop');
+                $(this).html('<img style="width:12px;position:relative;top:1px;left:1px;" src="assets/image/stop.png">');
+            });
+            $(document).on('click', '#stop', function(){
+                clearInterval(timerId);
+                $(this).removeAttr('id').attr('id', 'play');
+                $(this).html('<img style="width:15px;position:relative;left:2px;top:1px;" src="assets/image/play.png">');
+            });
+            $('#del').click(function(){
+               time = ['00', '00'];
+               update();
+            });
+            $('.add').click(function(){
+                let id = $(this).attr('data');
+                let val = id == 0 || id == 2 ? 10 : 1;
+                id == 0 || id == 1 ? time[0] = String((Number(time[0]) + val >= 100 ? 00 : Number(time[0]) + val)) : time[1] = String((Number(time[1]) + val >= 60 ? 00 : Number(time[1]) + val));
+                update();
+            });
+            $('.minus').click(function(){
+                let id = $(this).attr('data');
+                let val = id == 0 || id == 2 ? 10 : 1;
+                id == 0 || id == 1 ? time[0] = String((Number(time[0]) - val < 0 ? 99 : Number(time[0]) - val)) : time[1] = String((Number(time[1]) - val < 0 ? 59 : Number(time[1]) - val));
+                update();
+            });
+        });
+        
+    </script>
+
+</body>
+</html>
